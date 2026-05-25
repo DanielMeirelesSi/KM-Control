@@ -4,6 +4,12 @@ Sistema web para controle de veículos, abastecimentos, consumo médio, custo po
 
 O projeto foi desenvolvido como uma solução web para organizar informações de veículos e abastecimentos, aplicando conceitos de desenvolvimento full stack com C#, ASP.NET Core, Entity Framework Core, banco de dados relacional e uma interface web consumindo a API.
 
+## Screenshot
+
+### Dashboard
+
+![Dashboard do KM-Control](docs/images/dashboard.png)
+
 ## Objetivo do projeto
 
 O KM-Control surgiu a partir de uma necessidade prática: controlar melhor o consumo de combustível de veículos que não possuem cálculo automático de média de km/l.
