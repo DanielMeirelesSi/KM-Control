@@ -8,7 +8,7 @@ O projeto foi desenvolvido como uma solução web para organizar informações d
 
 ### Dashboard
 
-![Dashboard do KM-Control](docs/images/dashboard.png)
+![Dashboard do KM-Control](Docs/images/dashboard.png)
 
 ## Objetivo do projeto
 
