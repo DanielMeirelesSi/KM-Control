@@ -60,6 +60,7 @@ A ideia do sistema é permitir o cadastro de veículos e abastecimentos, calcula
 
 ## Estrutura do projeto
 
+```text
 KM-Control/
 │
 ├── KmControl.Api/
@@ -81,6 +82,7 @@ KM-Control/
 ├── KM-Control.sln
 ├── .gitignore
 └── README.md
+```
 
 ## Conceitos aplicados
 
