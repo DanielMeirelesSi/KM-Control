@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KmControl</title>
+
+    <link rel="stylesheet" href="./css/global.css">
+    <link rel="stylesheet" href="./css/layout.css">
+    <link rel="stylesheet" href="./css/components.css">
+    <link rel="stylesheet" href="./css/responsive.css">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-icon">KM</div>
+
+                <div>
+                    <h1>KmControl</h1>
+                    <p>Controle inteligente de veículos e abastecimentos</p>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <button class="nav-item active" data-section="dashboard">
+                    Dashboard
+                </button>
+
+                <button class="nav-item" data-section="veiculos">
+                    Veículos
+                </button>
+
+                <button class="nav-item" data-section="abastecimentos">
+                    Abastecimentos
+                </button>
+
+                <button class="nav-item" data-section="resumos">
+                    Resumos
+                </button>
+            </nav>
+
+            <div class="sidebar-footer">
+                <p>KmControl © 2026</p>
+                <span>Todos os direitos reservados.</span>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <div>
+                    <h2 id="page-title">Dashboard</h2>
+                    <p id="page-subtitle">Visão geral dos seus veículos e abastecimentos</p>
+                </div>
+
+                <div class="topbar-actions">
+                    <input type="text" placeholder="Buscar..." class="search-input">
+                    <div class="user-badge">Usuário</div>
+                </div>
+            </header>
+
+            <!-- DASHBOARD -->
+            <section class="page-section active" id="dashboard-section">
+                <section class="summary-grid dashboard-summary">
+                    <article class="summary-card metric-card metric-blue">
+                        <div class="metric-icon">🚗</div>
+
+                        <div>
+                            <span class="card-label">Veículos cadastrados</span>
+                            <strong id="total-veiculos">0</strong>
+                            <small>ativos</small>
+                        </div>
+                    </article>
+
+                    <article class="summary-card metric-card metric-green">
+                        <div class="metric-icon">⛽</div>
+
+                        <div>
+                            <span class="card-label">Abastecimentos</span>
+                            <strong id="total-abastecimentos">0</strong>
+                            <small>registrados</small>
+                        </div>
+                    </article>
+
+                    <article class="summary-card metric-card metric-warning">
+                        <div class="metric-icon">💰</div>
+
+                        <div>
+                            <span class="card-label">Total gasto</span>
+                            <strong id="total-gasto">R$ 0,00</strong>
+                            <small>geral</small>
+                        </div>
+                    </article>
+
+                    <article class="summary-card metric-card metric-green">
+                        <div class="metric-icon">📈</div>
+
+                        <div>
+                            <span class="card-label">Média geral</span>
+                            <strong id="media-geral">0 km/l</strong>
+                            <small>consumo</small>
+                        </div>
+                    </article>
+                </section>
+
+                <section class="dashboard-layout">
+                    <div class="dashboard-main-column">
+                        <section class="panel dashboard-chart-panel">
+                            <div class="panel-header">
+                                <div>
+                                    <h3>Resumo geral</h3>
+                                    <p>Visão consolidada do consumo e dos gastos.</p>
+                                </div>
+
+                                <div class="panel-actions">
+                                    <button class="filter-pill">Este mês</button>
+                                    <button class="filter-pill">R$</button>
+                                </div>
+                            </div>
+
+                            <div class="chart-grid">
+                                <div class="chart-box">
+                                    <div class="chart-header">
+                                        <span>Gasto por abastecimento</span>
+                                        <strong id="dashboard-gasto-chart-total">R$ 0,00</strong>
+                                    </div>
+
+                                    <div class="fake-bar-chart">
+                                        <span style="height: 38%;"></span>
+                                        <span style="height: 52%;"></span>
+                                        <span style="height: 46%;"></span>
+                                        <span style="height: 72%;"></span>
+                                        <span style="height: 60%;"></span>
+                                        <span style="height: 84%;"></span>
+                                        <span style="height: 66%;"></span>
+                                        <span style="height: 90%;"></span>
+                                    </div>
+                                </div>
+
+                                <div class="chart-box">
+                                    <div class="chart-header">
+                                        <span>Média km/l</span>
+                                        <strong id="dashboard-media-chart">0 km/l</strong>
+                                    </div>
+
+                                    <div class="fake-line-chart">
+                                        <div class="line-path"></div>
+                                        <span class="point point-1"></span>
+                                        <span class="point point-2"></span>
+                                        <span class="point point-3"></span>
+                                        <span class="point point-4"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="panel">
+                            <div class="panel-header">
+                                <div>
+                                    <h3>Últimos abastecimentos</h3>
+                                    <p>Histórico recente dos registros cadastrados.</p>
+                                </div>
+
+                                <button class="secondary-button" data-section-target="abastecimentos">
+                                    Ver todos
+                                </button>
+                            </div>
+
+                            <div class="table-wrapper">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Data</th>
+                                            <th>Veículo</th>
+                                            <th>Km</th>
+                                            <th>Litros</th>
+                                            <th>Valor</th>
+                                            <th>Média</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody id="tabela-abastecimentos-dashboard">
+                                        <tr>
+                                            <td colspan="6">Nenhum abastecimento carregado ainda.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+                    </div>
+
+                    <div class="dashboard-side-column">
+                        <section class="panel dashboard-vehicles-panel">
+                            <div class="panel-header">
+                                <div>
+                                    <h3>Veículos</h3>
+                                    <p>Resumo rápido dos veículos registrados.</p>
+                                </div>
+
+                                <button class="secondary-button" data-section-target="veiculos">
+                                    Ver todos
+                                </button>
+                            </div>
+
+                            <div id="lista-veiculos-dashboard" class="vehicle-list dashboard-vehicle-list">
+                                <p class="empty-message">Nenhum veículo carregado ainda.</p>
+                            </div>
+                        </section>
+
+                        <section class="panel quick-actions-panel">
+                            <div class="panel-header compact-header">
+                                <div>
+                                    <h3>Ações rápidas</h3>
+                                    <p>Cadastre novos registros.</p>
+                                </div>
+                            </div>
+
+                            <div class="quick-actions compact">
+                                <button class="primary-button" data-section-target="veiculos">
+                                    + Novo veículo
+                                </button>
+
+                                <button class="primary-button" data-section-target="abastecimentos">
+                                    + Novo abastecimento
+                                </button>
+                            </div>
+                        </section>
+
+                        <section class="panel vehicle-summary-panel">
+                            <div class="panel-header">
+                                <div>
+                                    <h3>Resumo por veículo</h3>
+                                    <p>Veja os indicadores individuais.</p>
+                                </div>
+
+                                <button class="secondary-button" data-section-target="resumos">
+                                    Ver detalhes
+                                </button>
+                            </div>
+
+                            <label class="form-label">
+                                Selecionar veículo
+                                <select id="dashboard-resumo-veiculo">
+                                    <option value="">Selecione o veículo</option>
+                                </select>
+                            </label>
+
+                            <div class="vehicle-summary compact-summary">
+                                <div>
+                                    <span>Total rodado</span>
+                                    <strong id="dashboard-resumo-km">0 km</strong>
+                                </div>
+
+                                <div>
+                                    <span>Total gasto</span>
+                                    <strong id="dashboard-resumo-gasto">R$ 0,00</strong>
+                                </div>
+
+                                <div>
+                                    <span>Média geral</span>
+                                    <strong id="dashboard-resumo-media">0 km/l</strong>
+                                </div>
+
+                                <div>
+                                    <span>Custo por km</span>
+                                    <strong id="dashboard-resumo-custo">R$ 0,00</strong>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </section>
+            </section>
+
+            <!-- VEÍCULOS -->
+            <section class="page-section" id="veiculos-section">
+                <section class="content-grid">
+                    <div class="content-column">
+                        <section class="panel">
+                            <div class="panel-header">
+                                <div>
+                                    <h3>Veículos cadastrados</h3>
+                                    <p>Gerencie seus carros, motos e outros veículos.</p>
+                                </div>
+                            </div>
+
+                            <div id="lista-veiculos" class="vehicle-list">
+                                <p class="empty-message">Nenhum veículo carregado ainda.</p>
+                            </div>
+                        </section>
+                    </div>
+
+                    <div class="content-column">
+                        <section class="panel">
+                            <div class="panel-header">
+                                <div>
+                                    <h3>Novo veículo</h3>
+                                    <p>Cadastre um veículo para acompanhar consumo e gastos.</p>
+                                </div>
+                            </div>
+
+                            <form id="form-veiculo" class="form">
+                                <label>
+                                    Nome
+                                    <input type="text" id="veiculo-nome" placeholder="Ex: Minha Moto" required>
+                                </label>
+
+                                <label>
+                                    Modelo
+                                    <input type="text" id="veiculo-modelo" placeholder="Ex: Honda CG 160" required>
+                                </label>
+
+                                <label>
+                                    Ano
+                                    <input type="number" id="veiculo-ano" placeholder="Ex: 2024" required>
+                                </label>
+
+                                <label>
+                                    Tipo
+                                    <select id="veiculo-tipo" required>
+                                        <option value="">Selecione</option>
+                                        <option value="Carro">Carro</option>
+                                        <option value="Moto">Moto</option>
+                                        <option value="Caminhonete">Caminhonete</option>
+                                        <option value="Utilitário">Utilitário</option>
+                                    </select>
+                                </label>
+
+                                <label>
+                                    Placa
+                                    <input type="text" id="veiculo-placa" placeholder="Opcional">
+                                </label>
+
+                                <label>
+                                    Odômetro atual
+                                    <input type="number" id="veiculo-odometro" placeholder="Ex: 7000" min="0" step="0.01" required>
+                                </label>
+
+                                <button type="submit" class="primary-button full">
+                                    Salvar veículo
+                                </button>
+                            </form>
+                        </section>
+                    </div>
+                </section>
+            </section>
+
+            <!-- ABASTECIMENTOS -->
+            <section class="page-section" id="abastecimentos-section">
+                <section class="content-grid">
+                    <div class="content-column">
+                        <section class="panel">
+                            <div class="panel-header">
+                                <div>
+                                    <h3>Histórico de abastecimentos</h3>
+                                    <p>Todos os abastecimentos registrados no sistema.</p>
+                                </div>
+                            </div>
+
+                            <div class="table-wrapper">
+                                <table>
+                                    <thead>
+                                            <tr>
+                                                <th>Data</th>
+                                                <th>Veículo</th>
+                                                <th>Km</th>
+                                                <th>Litros</th>
+                                                <th>Valor</th>
+                                                <th>Média</th>
+                                                <th>Ações</th>
+                                            </tr>
+                                    </thead>
+
+                                    <tbody id="tabela-abastecimentos">
+                                        <tr>
+                                            <td colspan="7">Nenhum abastecimento carregado ainda.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+                    </div>
+
+                    <div class="content-column">
+                        <section class="panel">
+                            <div class="panel-header">
+                                <div>
+                                    <h3>Novo abastecimento</h3>
+                                    <p>Registre um abastecimento usando o Trip.</p>
+                                </div>
+                            </div>
+
+                            <form id="form-abastecimento" class="form">
+                                <label>
+                                    Veículo
+                                    <select id="abastecimento-veiculo" required>
+                                        <option value="">Selecione o veículo</option>
+                                    </select>
+                                </label>
+
+                                <label>
+                                    Km rodado
+                                    <input type="number" id="km-rodado" placeholder="Ex: 130" min="0" step="0.01" required>
+                                </label>
+
+                                <label>
+                                    Litros abastecidos
+                                    <input type="number" id="litros-abastecidos" placeholder="Ex: 4.5" min="0" step="0.01" required>
+                                </label>
+
+                                <label>
+                                    Valor total
+                                    <input type="number" id="valor-total" placeholder="Ex: 28.50" min="0" step="0.01" required>
+                                </label>
+
+                                <label>
+                                    Combustível
+                                    <select id="combustivel" required>
+                                        <option value="">Selecione</option>
+                                        <option value="Gasolina">Gasolina</option>
+                                        <option value="Etanol">Etanol</option>
+                                        <option value="Diesel">Diesel</option>
+                                        <option value="Flex">Flex</option>
+                                    </select>
+                                </label>
+
+                                <button type="submit" class="primary-button full">
+                                    Salvar abastecimento
+                                </button>
+                            </form>
+                        </section>
+                    </div>
+                </section>
+            </section>
+
+            <!-- RESUMOS -->
+            <section class="page-section" id="resumos-section">
+                <section class="content-grid">
+                    <div class="content-column">
+                        <section class="panel">
+                            <div class="panel-header">
+                                <div>
+                                    <h3>Resumo geral</h3>
+                                    <p>Indicadores consolidados de todos os veículos.</p>
+                                </div>
+                            </div>
+
+                            <div class="vehicle-summary">
+                                <div>
+                                    <span>Quantidade de veículos</span>
+                                    <strong id="resumo-geral-veiculos">0</strong>
+                                </div>
+
+                                <div>
+                                    <span>Quantidade de abastecimentos</span>
+                                    <strong id="resumo-geral-abastecimentos">0</strong>
+                                </div>
+
+                                <div>
+                                    <span>Total rodado</span>
+                                    <strong id="resumo-geral-km">0 km</strong>
+                                </div>
+
+                                <div>
+                                    <span>Total gasto</span>
+                                    <strong id="resumo-geral-gasto">R$ 0,00</strong>
+                                </div>
+
+                                <div>
+                                    <span>Média geral</span>
+                                    <strong id="resumo-geral-media">0 km/l</strong>
+                                </div>
+
+                                <div>
+                                    <span>Custo médio por km</span>
+                                    <strong id="resumo-geral-custo">R$ 0,00</strong>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+
+                    <div class="content-column">
+                        <section class="panel">
+                            <div class="panel-header">
+                                <div>
+                                    <h3>Resumo por veículo</h3>
+                                    <p>Veja os indicadores individuais.</p>
+                                </div>
+                            </div>
+
+                            <label class="form-label">
+                                Selecionar veículo
+                                <select id="resumo-veiculo">
+                                    <option value="">Selecione o veículo</option>
+                                </select>
+                            </label>
+
+                            <div class="vehicle-summary">
+                                <div>
+                                    <span>Total rodado</span>
+                                    <strong id="resumo-km">0 km</strong>
+                                </div>
+
+                                <div>
+                                    <span>Total gasto</span>
+                                    <strong id="resumo-gasto">R$ 0,00</strong>
+                                </div>
+
+                                <div>
+                                    <span>Média geral</span>
+                                    <strong id="resumo-media">0 km/l</strong>
+                                </div>
+
+                                <div>
+                                    <span>Custo por km</span>
+                                    <strong id="resumo-custo">R$ 0,00</strong>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </section>
+            </section>
+        </main>
+    </div>
+
+    <script type="module" src="./js/app.js"></script>
+</body>
+</html>

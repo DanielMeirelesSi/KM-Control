@@ -1,0 +1,213 @@
+.app-container {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    min-height: 100vh;
+    padding: 16px;
+    gap: 16px;
+}
+
+.sidebar {
+    background: rgba(17, 24, 39, 0.9);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-soft);
+    position: sticky;
+    top: 16px;
+    height: calc(100vh - 32px);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 26px;
+}
+
+.brand-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-hover));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    color: var(--color-text);
+    box-shadow: 0 12px 28px rgba(37, 99, 235, 0.35);
+}
+
+.brand h1 {
+    font-size: 1.35rem;
+    line-height: 1;
+    margin-bottom: 5px;
+}
+
+.brand p {
+    font-size: 0.78rem;
+    color: var(--color-muted);
+    line-height: 1.35;
+    max-width: 160px;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.nav-item {
+    width: 100%;
+    padding: 13px 15px;
+    border-radius: var(--radius-md);
+    background: transparent;
+    color: var(--color-muted);
+    text-align: left;
+    transition: var(--transition-fast);
+    font-weight: 600;
+}
+
+.nav-item:hover {
+    background: rgba(37, 99, 235, 0.12);
+    color: var(--color-text);
+}
+
+.nav-item.active {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-hover));
+    color: var(--color-text);
+    box-shadow: 0 14px 30px rgba(37, 99, 235, 0.28);
+}
+
+.sidebar-footer {
+    margin-top: auto;
+    border-top: 1px solid var(--color-border);
+    padding-top: 18px;
+    color: var(--color-muted);
+}
+
+.sidebar-footer p {
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 4px;
+}
+
+.sidebar-footer span {
+    font-size: 0.8rem;
+}
+
+.main-content {
+    min-width: 0;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.topbar {
+    background: rgba(17, 24, 39, 0.72);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 18px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    box-shadow: var(--shadow-soft);
+}
+
+.topbar h2 {
+    font-size: 1.65rem;
+    margin-bottom: 4px;
+}
+
+.topbar p {
+    color: var(--color-muted);
+}
+
+.topbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.search-input {
+    width: 250px;
+    background: var(--color-bg-soft);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 11px 14px;
+    color: var(--color-text);
+}
+
+.search-input::placeholder {
+    color: var(--color-muted);
+}
+
+.user-badge {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    padding: 10px 15px;
+    color: var(--color-text);
+    font-weight: 600;
+}
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(300px, 0.75fr);
+    gap: 16px;
+    align-items: start;
+    width: 100%;
+    overflow: hidden;
+}
+
+.content-column {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    min-width: 0;
+}
+
+.panel-large {
+    min-width: 0;
+}
+
+.page-section {
+    display: none;
+}
+
+.page-section.active {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.dashboard-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(330px, 0.95fr);
+    gap: 16px;
+    align-items: start;
+    width: 100%;
+    overflow: hidden;
+}
+
+.dashboard-main-column,
+.dashboard-side-column {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    min-width: 0;
+}
+
+.dashboard-summary {
+    margin-bottom: 0;
+}

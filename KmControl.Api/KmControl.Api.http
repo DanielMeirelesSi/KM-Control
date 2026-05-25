@@ -1,0 +1,4 @@
+@KmControlApi_HostAddress = http://localhost:5250
+
+### Testar rota inicial
+GET {{KmControlApi_HostAddress}}/
